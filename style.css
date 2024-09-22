@@ -4,7 +4,9 @@
     padding: 0px;
     font-family: "AdihausDIN",Arial, sans-serif;
 }
-
+button{
+    background-color: white;
+}
 .topnev{
     width: 100%;
     height:40px;
@@ -49,7 +51,6 @@
     gap: 50px;
     align-items: end;
     flex: 1;
-    
 }
 
 .menu {
@@ -159,4 +160,78 @@
     font-size: 10px;
     padding: 2px 5px;
     border-radius: 50%;
+}
+
+.hero{
+    background-image: url(https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920/xcat_ss24_bts_bnr_sept_phase2_mw_d_c093146f6b.jpg);
+    height: 95vh;
+    width: 100%;
+    position: relative;
+}
+.hero button{
+    padding: 5px 15px;
+    height: 39px;
+    width: 176px;
+    font-size: 14px;
+    font-weight: 900;
+    border: none;
+    border: 1px solid black;
+}
+.hero button:hover{
+    color: #767677;
+}
+.main input{
+    position: absolute;
+}
+.main p{
+    position: absolute;
+}
+.all{
+    padding: 30px;
+    background-color: white;
+}
+.all button{
+    border: none;
+    padding: 5px 15px;
+    border: 1px solid black;
+    height:40px;
+    font-size: 14px;
+    font-weight: 900;
+}
+.bb button:hover{
+    background-color: black;
+    color: white;
+    transition: 0.15s;
+    cursor: pointer;
+}
+.bb{
+    display: flex;
+    gap: 10px;
+}
+.all span{
+    padding: 20px;
+}
+.bar{
+    background-color: black;
+    display: block;
+    position: relative;
+    height: 4px;
+}
+nav{
+display: flex;
+padding: 20px;
+    gap: 80px;
+}
+
+.aaa{
+    padding: 30px;
+}
+.container{ padding: 60px;
+    display: flex;
+}
+.column{
+    flex: 1;
+    padding: 10px;
+    border: 1px solud black;
+    text-align: center;
 }
