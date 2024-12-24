@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://db.onlinewebfonts.com/c/c0cd6ec8ce6d2bbd315a13b62ed13550?family=AdihausDIN" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a2095ea267.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Ensures full height of the body and pushes footer to the bottom */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background-image: url('/shoe.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .hero-content {
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* This ensures that the body takes up the full space available, pushing footer to bottom */
+        .content-wrapper {
+            flex-grow: 1;
+            /* Allows the main content to grow and take up remaining space */
+        }
+
+        .bg-dark.text-white {
+            background-color: #343a40;
+            color: white;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        footer .row {
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+    <title>
+        <%= pageTitle %>
+    </title>
+</head>
+
+<body>
+
+    <div class="bg-dark text-white text-center py-2">
+        <p class="mb-0 small fw-bold">UP TO 60% OFF : FALL SAVINGS</p>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white  my-2">
+        <!-- Logo Section -->
+        <div class="navbar-brand">
+            <svg viewBox="100 100 50 32" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z"
+                    fill="black"></path>
+            </svg>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="w-100">
+            <div class="w-100 collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="/">MEN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#">WOMEN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#">KIDS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#">SALE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="#">NEW & TRENDING</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2">
+                    <% if (user) { %>
+                        <!-- If the user is logged in, show Logout -->
+                        <a href="/logout" class="btn btn-light">Logout</a>
+                        <% } else { %>
+                            <!-- If the user is not logged in, show Login -->
+                            <a href="/login" class="btn btn-light">Login</a>
+                            <% } %>
+
+                                <!-- Always show Cart and Products links -->
+                                <a href="/cart" class="btn btn-light">Cart</a>
+                                <a href="/products" class="btn btn-light">Products</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content wrapper -->
+    <div class="content-wrapper">
+        <%- body %>
+    </div>
+
+    <div class="bg-dark text-white">
+    <footer class="row row-cols-5 py-5 bg-dark text-white">
+        <div class="col">
+            <a href="/" class="d-flex align-items-center mb-3 link-light text-decoration-none">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" width="120">
+            </a>
+            <p class="text-white">© 2024 Adidas</p>
+        </div>
+    
+        <!-- Product Links -->
+        <div class="col">
+            <h5>Products</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Men</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Women</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Kids</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">New Arrivals</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Best Sellers</a></li>
+            </ul>
+        </div>
+    
+        <!-- Support Links -->
+        <div class="col">
+            <h5>Support</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Contact Us</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Shipping & Returns</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Order Status</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Size Guide</a></li>
+            </ul>
+        </div>
+    
+        <!-- About Links -->
+        <div class="col">
+            <h5>About</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Our Story</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Careers</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Sustainability</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Press</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Affiliates</a></li>
+            </ul>
+        </div>
+    
+        <!-- Social Media Links -->
+        <div class="col">
+            <h5>Follow Us</h5>
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link p-0 text-white"><i class="fab fa-facebook-f"></i>
+                        Facebook</a></li>
+                <li class="nav-item"><a href="#" class="nav-link p-0 text-white"><i class="fab fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link p-0 text-white"><i class="fab fa-instagram"></i>
+                        Instagram</a></li>
+                <li class="nav-item"><a href="#" class="nav-link p-0 text-white"><i class="fab fa-linkedin-in"></i>
+                        LinkedIn</a></li>
+            </ul>
+        </div>
+    </footer>
+    </div>
+
+</body>
+
+</html>

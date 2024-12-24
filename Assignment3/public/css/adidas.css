@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "AdihausDIN", Arial, sans-serif;
+}
+
+button {
+    background-color: white;
+}
+
+.topnev {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.topnev p {
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.navbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 20px;
+    background-color: white;
+}
+
+.logodiv {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Menu Div Styling */
+.menudiv {
+    height: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+    align-items: end;
+    flex: 1;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu p {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu p:hover {
+    color: grey;
+}
+
+.menu p:nth-last-child(2),
+.menu p:nth-last-child(1) {
+    font-weight: 200;
+    color: grey;
+}
+
+.menudivbutton {
+    width: 32%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    padding-right: 20px;
+    gap: 15px;
+}
+
+/* Help and Account Section */
+.helpdiv {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.helpdiv p {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.helpdiv svg {
+    width: 10px;
+
+}
+
+.helpdiv img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.helpdiv p:hover {
+    text-decoration: underline;
+}
+
+/* Icons and Buttons Styling */
+.menubutton {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+
+}
+
+.menubutton input {
+    width: 50%;
+    padding: 6px 4px;
+    margin-left: 30px;
+    border: none;
+    background-color: #ECEFF1;
+}
+
+
+.menubutton button {
+    border: none;
+    background: none;
+    cursor: pointer;
+
+}
+
+.menubutton button svg {
+    width: 20px;
+}
+
+.menubutton button img {
+    width: 20px;
+}
+
+/* Example of Notification Badge */
+.menubutton button .notification {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: yellow;
+    color: black;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.hero {
+    background-image: url(https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920/xcat_ss24_bts_bnr_sept_phase2_mw_d_c093146f6b.jpg);
+    height: 87vh;
+    width: 100%;
+    position: relative;
+}
+
+.hero button {
+    padding: 5px 15px;
+    height: 39px;
+    width: 176px;
+    font-size: 14px;
+    font-weight: 900;
+    border: none;
+    border: 1px solid black;
+}
+
+.hero button:hover {
+    color: #767677;
+    cursor: pointer;
+}
+
+.main input {
+    position: absolute;
+}
+
+.main p {
+    position: absolute;
+}
+
+.all {
+    padding: 30px;
+    background-color: white;
+}
+
+.all button {
+    border: none;
+    padding: 5px 15px;
+    border: 1px solid black;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.bb button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
+.bb {
+    display: flex;
+    gap: 10px;
+}
+
+.all span {
+    padding: 20px;
+}
+
+.bar {
+    background-color: black;
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    padding: 20px;
+    gap: 80px;
+}
+
+.aaa {
+    padding: 30px;
+}
+
+.container {
+    padding: 60px;
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    border: 1px solud black;
+    text-align: center;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.checkout-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+}

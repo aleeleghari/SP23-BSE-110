@@ -1,0 +1,54 @@
+<h1 class="mb-4 text-center">
+    <%= product._id ? 'Edit' : 'Create' %> Product
+</h1>
+
+<div class="card mx-auto shadow" style="max-width: 600px;">
+    <div class="card-body">
+        <!-- Form for creating/editing a product -->
+        <form action="<%= product._id ? '/admin/edit-product/' + product._id : '/admin/create-product' %>" method="POST"
+            enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Product Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter product name"
+                    value="<%= product.name %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="Enter price"
+                    value="<%= product.price %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" name="category" class="form-select" required>
+                    <option value="">Select category</option>
+                    <% categories.forEach(category=> { %>
+                        <option value="<%= category._id %>" <%=product.category &&
+                            category._id.toString()===product.category.toString() ? 'selected' : '' %> >
+                            <%= category.name %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="4"
+                    placeholder="Enter product description"><%= product.description %></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" id="stock" name="stock" class="form-control" placeholder="Enter stock quantity"
+                    value="<%= product.stock %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" id="image" name="image" class="form-control">
+                <% if (product.img) { %>
+                    <p>Current Image:</p>
+                    <img src="<%= product.img %>" alt="Product Image" width="100">
+                    <input type="hidden" name="existingImage" value="<%= product.img %>">
+                    <% } %>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Save Product</button>
+        </form>
+    </div>
+</div>
