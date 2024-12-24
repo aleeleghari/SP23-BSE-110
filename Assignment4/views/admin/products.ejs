@@ -1,0 +1,54 @@
+<h1 class="mb-4">Products</h1>
+
+<a href="/admin/create-product" class="btn btn-primary mb-3">Add Product</a>
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th> <!-- Display the category name -->
+            <th>Stock</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach((product, index)=> { %>
+            <tr>
+                <td>
+                    <%= index + 1 %>
+                </td>
+                <td>
+                    <%= product.name %>
+                </td>
+                <td>$<%= product.price %>
+                </td>
+                <td>
+                    <%= product.category ? product.category.name : 'N/A' %>
+                </td> <!-- Display category name -->
+                <td>
+                    <%= product.stock %>
+                </td>
+                <td><img src="<%= product.img %>" alt="<%= product.name %>" width="50"></td>
+                <td>
+                    <%= product.description || 'No description available' %>
+                </td>
+                <td>
+                    <%= product.createdAt.toLocaleDateString() %>
+                </td>
+                <td>
+                    <%= product.updatedAt.toLocaleDateString() %>
+                </td>
+                <td>
+                    <a href="/admin/edit-product/<%= product._id %>" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="/admin/delete-product/<%= product._id %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>

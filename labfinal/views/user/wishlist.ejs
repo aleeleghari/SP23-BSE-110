@@ -1,0 +1,159 @@
+<h2 class="wishlist-title">Your Wishlist</h2>
+
+<% if (wishlist.length===0) { %>
+    <p class="empty-wishlist-message">Your wishlist is empty. Start adding your favorite products!</p>
+    <% } else { %>
+        <div class="wishlist-container mb-4">
+            <% wishlist.forEach(product=> { %>
+                <div class="wishlist-card">
+                    <img src="<%= product.img %>" alt="<%= product.name %>" class="wishlist-product-img">
+                    <div class="wishlist-product-details">
+                        <h4 class="product-name">
+                            <%= product.name %>
+                        </h4>
+                        <p class="product-description">
+                            <%= product.description %>
+                        </p>
+                        <p class="product-price">Price: $<%= product.price %>
+                        </p>
+                        <div class="wishlist-actions">
+                          
+                            <button class="btn btn-danger remove-btn" data-product-id="<%= product._id %>">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+        <% } %>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const removeButtons = document.querySelectorAll('.remove-btn');
+
+        removeButtons.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const productId = button.getAttribute('data-product-id');
+
+                const confirmRemoval = confirm('Are you sure you want to remove this item from your wishlist?');
+                if (!confirmRemoval) return;
+
+                try {
+                    const response = await fetch(`/wishlist/${productId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert(data.message);
+                        // Remove the product card from the DOM
+                        button.closest('.wishlist-card').remove();
+                    } else {
+                        alert(data.message || 'Failed to remove item.');
+                    }
+                } catch (error) {
+                    console.error('Error removing item from wishlist:', error);
+                    alert('An error occurred. Please try again later.');
+                }
+            });
+        });
+    });
+
+</script>
+
+<style>
+/* Wishlist title */
+.wishlist-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Empty wishlist message */
+.empty-wishlist-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 2rem;
+}
+
+/* Wishlist container */
+.wishlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Individual card */
+.wishlist-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Product image */
+.wishlist-product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Product details */
+.wishlist-product-details {
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 1rem;
+}
+
+/* View product button */
+.btn {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+</style>

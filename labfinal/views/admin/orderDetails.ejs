@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+    <div class="container mt-5">
+        <h1>Order Details</h1>
+
+        <div class="card">
+            <div class="card-header">
+                Order ID: <%= order._id %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">User Details</h5>
+                <p class="card-text">Name: <%= order.user.name %>
+                </p>
+                <p class="card-text">Email: <%= order.user.email %>
+                </p>
+                <p class="card-text">Location: <%= order.user.location %>
+                </p>
+
+                <h5 class="card-title">Order Items</h5>
+                <ul>
+                    <% order.items.forEach(item=> { %>
+                        <li>
+                            <%= item.product.name %> - Quantity: <%= item.quantity %> - Price: <%= item.price %>
+                        </li>
+                        <% }) %>
+                </ul>
+
+                <h5 class="card-title">Status: <%= order.status %>
+                </h5>
+                <a href="/admin/orders" class="btn btn-secondary">Back to Orders</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>

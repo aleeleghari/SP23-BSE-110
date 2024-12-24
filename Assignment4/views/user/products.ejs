@@ -1,0 +1,153 @@
+<h2 class="mb-4 text-center">Our Products</h2>
+
+<!-- Search, Sort, and Filter -->
+<form method="get" action="/products" class="d-flex justify-content-center gap-4 mb-4 py-4">
+    <!-- Search Input -->
+    <input type="text" name="search" value="<%= search %>" placeholder="Search for products..."
+        class="form-control w-50 shadow-sm">
+
+    <!-- Category Filter -->
+    <select name="category" class="form-control w-25 shadow-sm">
+        <option value="">All Categories</option>
+        <% categories.forEach(category=> { %>
+            <option value="<%= category._id %>" <%=category._id==categoryFilter ? 'selected' : '' %>><%= category.name
+                    %>
+            </option>
+            <% }) %>
+    </select>
+
+    <!-- Sort Dropdown -->
+    <select name="sort" class="form-control w-25 shadow-sm">
+        <option value="name" <%=sortOption==='name' ? 'selected' : '' %>>Sort by Name</option>
+        <option value="price_asc" <%=sortOption==='price_asc' ? 'selected' : '' %>>Sort by Price (Low to High)</option>
+        <option value="price_desc" <%=sortOption==='price_desc' ? 'selected' : '' %>>Sort by Price (High to Low)
+        </option>
+    </select>
+
+    <button type="submit" class="btn btn-primary shadow-sm">Filter</button>
+</form>
+
+<!-- Product Cards Section -->
+<div class="row gx-3 gy-4 px-4">
+    <% products.forEach(product=> { %>
+        <div class="col-md-4 py-4 col-sm-6">
+            <div class="card shadow-sm border-0 rounded-lg">
+                <img src="<%= product.img %>" class="card-img-top img-fluid rounded-top" alt="<%= product.name %>">
+                <div class="card-body">
+                    <h5 class="card-title mb-3 text-truncate" title="<%= product.name %>">
+                        <%= product.name %>
+                    </h5>
+        
+                    <!-- Product Description -->
+                    <p class="card-text text-muted" title="<%= product.description %>">
+                        <%= product.description %>
+                    </p>
+        
+                    <!-- Product Price -->
+                    <h6 class="card-price text-success">$<%= product.price %>
+                    </h6>
+        
+                    <!-- Product Quantity -->
+                    <p class="card-text text-muted">Stock: <%= product.stock %>
+                    </p>
+        
+                    <!-- Add to Cart Button -->
+                    <div class="d-flex justify-content-center">
+                        <form action="/cart" method="POST" class="w-100">
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity to 1 -->
+                            <button type="submit" class="btn btn-primary w-75 py-2 rounded-pill shadow-sm">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% }) %>
+</div>
+
+
+<style>
+/* General Card Styling */
+.card {
+    height: 100%; /* Ensure all cards are the same height */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Image */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Card Body */
+.card-body {
+    flex-grow: 1; /* Allow card body to stretch */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Product Description */
+.card-text.text-muted {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    min-height: 40px; /* Set a fixed height */
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Ensure text does not wrap */
+}
+
+/* Product Price */
+.card-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: auto; /* Push the button to the bottom */
+}
+
+/* Button Hover Effect */
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Input Fields and Dropdowns */
+input[type="text"], select {
+    border-radius: 50px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus, select:focus {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    border-color: #007bff;
+}
+
+/* Filter Button */
+button.btn-primary {
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+/* Card Container */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+</style>

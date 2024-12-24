@@ -1,0 +1,55 @@
+<h2 class="mb-4">Your Cart</h2>
+
+<% if (cartItems.length===0) { %>
+    <p>Your cart is empty.</p>
+    <% } else { %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cartItems.forEach((item, index)=> { %>
+                    <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>$<%= item.price %>
+                        </td>
+                        <td>
+                            <form method="POST" action="/cart/update">
+                                <input type="hidden" name="productId" value="<%= item.productId %>">
+                                <input type="number" name="quantity" value="<%= item.quantity %>" min="1"
+                                    class="form-control" style="width: 60px;">
+                                <button type="submit" class="btn btn-primary mt-2">Update</button>
+                            </form>
+                        </td>
+                        <td>$<%= item.totalPrice %>
+                        </td>
+                        <td>
+                            <form method="POST" action="/cart/remove">
+                                <input type="hidden" name="productId" value="<%= item.productId %>">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <a href="/checkout" class="btn btn-success">Proceed to Checkout</a>
+            <a href="/products" class="btn btn-warning">Continue Shopping</a>
+        </div>
+        <h4 class="mt-4">Total: $<%= total %>
+        </h4>
+        <% } %>

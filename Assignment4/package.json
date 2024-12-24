@@ -1,0 +1,28 @@
+{
+    "name": "ecommerce-admin",
+    "version": "1.0.0",
+    "description": "Admin Panel for E-Commerce Website",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.1",
+        "cloudinary": "^1.27.0",
+        "dotenv": "^16.0.3",
+        "ejs": "^3.1.8",
+        "express": "^4.21.2",
+        "express-ejs-layouts": "^2.5.1",
+        "express-session": "^1.18.1",
+        "mongoose": "^6.8.1",
+        "multer": "^1.4.5-lts.1",
+        "multer-storage-cloudinary": "^4.0.0",
+        "passport": "^0.7.0",
+        "passport-local": "^1.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
